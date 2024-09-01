@@ -22,20 +22,20 @@ const TypedBios = () => {
     <div>
       <ul id="bios" className="hidden">
         <li>
-          I'm aliased as <b className="font-medium">Karhdo</b> at work.
+          I'm aliased as <b className="font-medium">hameed</b> at work.
         </li>
         <li>
-          I live in <b className="font-medium">Ho Chi Minh, Viet Nam</b>.
+          I live in <b className="font-medium">Bangalore, India</b>.
         </li>
+        {/* <li>
+          I was born in the beautiful <b className="font-medium">bangalore</b> city.
+        </li> */}
         <li>
-          I was born in the beautiful <b className="font-medium">Quang Ngai</b> city.
-        </li>
-        <li>
-          My first programming language I learned was <b className="font-medium">C++</b>.
+          My first programming language I learned was <b className="font-medium">C#</b>.
         </li>
         <li>I love web development.</li>
         <li>
-          I'm focusing on building <b className="font-medium">Social Analytics Software</b>.
+          I'm focusing on learning <b className="font-medium">Product Management</b>.
         </li>
         <li>
           I work mostly with <b className="font-medium">Javascript/Typescript</b> technologies.
