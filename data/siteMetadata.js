@@ -2,10 +2,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 
 const siteMetadata = {
-  title: "Karhdo's Coding Adventure",
-  author: 'Trong Khanh',
-  fullName: 'Do Trong Khanh',
-  headerTitle: "Karhdo's Blog",
+  title: "Hameed's Personal notes",
+  author: 'Hameed Syed',
+  fullName: 'Syed Hameed K',
+  headerTitle: "shk's Blog",
   description: 'My desire to practice my skills and share my acquired knowledge fuels my endeavors.',
   language: 'en-us',
   theme: 'system',
