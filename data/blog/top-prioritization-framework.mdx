@@ -11,7 +11,60 @@ import Twemoji from './components/Twemoji';
 
 ## Introduction
 
-Feature prioritization are crucial components at the center of NestJS. In this post, we'll take a closer look at what modules are in NestJS.
+Feature prioritization is a critical task in product management, where you decide which features or enhancements should be developed and released first based on various factors like value, effort, impact, and alignment with business goals. Effective prioritization ensures that the product development team focuses on the most important features that deliver the highest value to users and the business.
+
+### Why Feature prioritization ?
+
+- **Resource Management**: Development resources (time, budget, people) are often limited, so prioritizing features ensures optimal use of these resources.
+
+- **Strategic Alignment**: Helps ensure that the development work aligns with the company’s strategic goals.
+
+- **User Satisfaction**: By prioritizing features that address the most pressing user needs, you improve user satisfaction and retention.
+
+- **Market Relevance**: Keeps your product competitive by focusing on features that differentiate your product in the market.
+
+### Prioritization frameworks
+
+Feature prioritization frameworks help teams make informed decisions on which features to build, improve, or drop. Here’s a detailed look at some of the most popular frameworks:
+
+1. Value vs Effort Matrix
+
+**Overview**: This matrix helps you prioritize features by comparing their expected value (benefit) against the effort (resources) required to implement them.
+
+Steps:
+List Features: Write down all potential features.
+
+- Estimate Value: For each feature, estimate the potential value it will bring to users or the business. Value can be assessed by how well the feature aligns with business goals, user needs, or competitive advantage.
+- Estimate Effort: Estimate the effort in terms of time, resources, and complexity to build each feature.
+- Plot on the Matrix: Place each feature on a 2x2 matrix where one axis is Value (Low to High) and the other is Effort (Low to High).
+  Prioritize:
+  High Value, Low Effort(Quick wins): These are quick wins and should be prioritized.
+  High Value, High Effort(strategic): Consider these as strategic projects; they may take time but have significant impact.
+  Low Value, Low Effort(fill ins): These can be done if resources allow, but they’re not critical,indicating it can be worked on when there’s time available
+  Low Value, High Effort(time sinks): These are often not worth pursuing unless necessary for strategic reasons.
+
+![Diagram Module In NestJS](/static/images/blogs/value-vs-effort.png)
+
+Example Features:
+Feature A is a quick win, offering high value with low effort.
+Feature D is a strategic project, with both high value and high effort.
+Feature G is a fill-in, providing low value with minimal effort.
+Feature B is a time sink, requiring high effort but offering less value.
+
+![Diagram Module In NestJS](/static/images/blogs/value-vs-eff-example.png)
+This matrix helps prioritize which features to tackle first, ensuring that resources are used efficiently to maximize impact. ​​
+Pros: Simple and visual; easy to understand.
+Cons: Subjective estimates; doesn’t consider user impact in a nuanced way as its subjective estimation ,biased ,Bias Toward Measurable Value ,Overemphasis on Quick Wins
+
+2. Second item
+3. Third item
+4. Fourth item
+5. First item
+6. Second item
+7. Third item
+8. Fourth item
+9. Fourth item
+10. Fourth item
 
 A module is a class annotated with a `@Module()` decorator. The `@Module()` decorator provides metadata that **Nest** makes use of to organize the application structure:
 
