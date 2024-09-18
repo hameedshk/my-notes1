@@ -117,7 +117,7 @@ This matrix helps prioritize which features to tackle first, ensuring that resou
 
 ```javascript
 //Higher RICE scores indicate higher priority
-RICE Score =(Reach * Impact * Confidence) / Effort.\
+RICE Score =(Reach * Impact * Confidence) / Effort.
 ```
 
 <p>Example of RICE Scoring:Imagine a team evaluating three different features:</p>
@@ -139,17 +139,65 @@ Score: 2000×3×0.92/2= 2,700
    RICE Score: 3000×2×1.01.5=4,000\1.5=4,000
    Prioritization Outcome:
 
-Feature C has the highest RICE score (4,000), suggesting it should be prioritized first.
+**Conclusion** : Feature C has the highest RICE score (4,000), suggesting it should be prioritized first.
 Feature A comes next with a score of 2,700, followed by Feature B with a score of 667.
+Complexity: The scoring process can be time-consuming, especially if the data is hard to gather. Overemphasis on Quantifiable Factors: Qualitative factors like strategic alignment or brand perception might be underrepresented.
 
-Pros: Provides a clear, data-driven decision; balances value and effort,accounts for uncertainty
-Cons: Requires accurate data and estimation; can be time-consuming
-Subjectivity in Scoring: Estimates for Reach, Impact, and Effort can still be subjective and may vary between team members.
-Complexity: The scoring process can be time-consuming, especially if the data is hard to gather.
-Overemphasis on Quantifiable Factors: Qualitative factors like strategic alignment or brand perception might be underrepresented.
-RICE scoring provides a structured approach to feature prioritization, ensuring that the team focuses on the most valuable and feasible projects.
+<em>Pros</em>: Provides a clear,Complexity: The scoring process can be time-consuming, especially if the data is hard to
+gather. Overemphasis on Quantifiable Factors: Qualitative factors like strategic alignment or brand perception might be
+underrepresented. data-driven decision; balances value and effort,accounts for uncertainty
 
-2. Second item
+<em>Cons</em>: Requires accurate data and estimation; can be time-consuming Subjectivity in Scoring: Estimates for
+Reach, Impact, and Effort can still be subjective and may vary between team members. Complexity: The scoring process can
+be time-consuming, especially if the data is hard to gather. Overemphasis on Quantifiable Factors: Qualitative factors
+like strategic alignment or brand perception might be underrepresented.
+<p>
+  RICE scoring provides a structured approach to feature prioritization, ensuring that the team focuses on the most
+  valuable and feasible projects.
+</p>
+
+#### 3.<ins>MoSCoW Method</ins>
+
+This method is particularly useful in managing scope and ensuring that the most critical elements of a project are completed first.
+**Breakdown of the MoSCoW Framework:**
+
+1. **Must Have**: These are non-negotiable requirements that are critical to the success of the project. Without these, the project would fail or be deemed unsuccessful.
+
+**Examples**: Core features that the product cannot function without, regulatory or legal requirements, essential functionality that must be delivered within a fixed timeframe.
+
+<p>
+  **Considerations**: If any "Must have" item is not delivered, the project could be delayed or even canceled. It’s
+  important to keep these to a minimum to ensure feasibility.
+</p>
+2. **Should Have**: These are important but not vital requirements. They add significant value and are expected to be included
+if possible, but the project can still function without them.
+
+**Examples**: Features that enhance user experience, add-ons that provide competitive advantage, or improvements that could boost performance.
+
+**Considerations:** Should-have items are usually planned into the project but are the first to be rescheduled or scoped out if time, resources, or budget constraints arise.
+
+3. **Could Have:** These are desirable but not necessary requirements. They are often considered as enhancements or nice-to-haves that can be implemented if resources and time allow after the Must have and Should have items are completed.
+
+**Examples:** Cosmetic changes, minor feature enhancements, or future-proofing additions that don't impact the current operation.
+
+<p>
+  **Considerations:** These items often form a backlog for future phases or iterations and are the least likely to be
+  included in the initial project scope.
+</p>
+
+4. Won’t Have (or Would like to have but not this time): These are items that have been agreed upon as the least critical or outside the current project scope. They are not planned for delivery in the current phase but may be revisited in the future.
+   **Examples:** Features that are out of scope for the current release, ideas that are interesting but not aligned with the current project goals.
+   <p>
+     **Considerations:** Clearly identifying these items helps manage stakeholder expectations and keeps the project
+     focused on delivering value within the agreed constraints.
+   </p>
+
+**Benefits of Using MoSCoW:**
+Clarity and Focus: It helps teams and stakeholders clearly understand and agree on what’s most important, preventing scope creep.
+Resource Management: By prioritizing tasks, teams can allocate resources more efficiently, ensuring that critical elements are completed on time.
+Flexibility: MoSCoW allows for flexibility in managing changes. If unexpected issues arise, the project can adapt by shifting the focus to Must-have items and postponing less critical work.
+Stakeholder Alignment: It fosters communication and alignment among stakeholders, ensuring that everyone is on the same page regarding priorities.
+
 3. Third item
 4. Fourth item
 5. First item
@@ -158,270 +206,6 @@ RICE scoring provides a structured approach to feature prioritization, ensuring 
 8. Fourth item
 9. Fourth item
 10. Fourth item
-
-A module is a class annotated with a `@Module()` decorator. The `@Module()` decorator provides metadata that **Nest** makes use of to organize the application structure:
-
-- Each application has at least one module, a **root module**.
-- In **NestJS** modules are strongly recommended as an effective way to organize your components.
-- Each module will encapsulate a set of closely related functions.
-
-![Diagram Module In NestJS](/static/images/blogs/module-in-nestjs.png)
-
-The decorator `@Module()` takes a single object whose properties describe the module:
-
-```javascript
-// modules/product/product.module.ts
-import { Module } from '@nestjs/common';
-
-import CategoryModule from 'modules/category.module'; // Expose route controller.
-
-import ProductController from './product.controller'; // Expose route controller.
-import ProductService from './product.service';       // Business Logic
-import ProductRepository from './product.repository'; // Data Access
-
-@Module({
-  imports: [CategoryModule],
-  controllers: [ProductsController],
-  providers: [ProductService, ProductRepository],
-  exports: [ProductService],
-});
-
-export class ProductModule {}
-```
-
-- `provider`: The Nest injector will create providers that can be shared within this module at a minimum.
-- `controllers`: The set of controllers defined in this module
-- `imports`: The list of imported modules that export the providers
-- `exports`: The subset of `providers` that are provided by this module and should be available in other modules which import this module.
-
-## Types Of Modules In NestJS
-
-### Feature Module
-
-- A **feature module** simply organizes code relevant for a specific feature, keeping code organized and establishing clear boundaries.
-
-- To demonstrate this, we'll create the `ProductModule` (responsible for encapsulating Product logic and endpoints).
-
-```javascript
-// modules/product/product.module.ts
-import { Module } from '@nestjs/common';
-
-import ProductController from './product.controller';
-import ProductService from './product.service';
-
-@Module({
-  controllers: [ProductController],
-  providers: [ProductService],
-})
-export default class ProductModule {}
-```
-
-- The last thing we need to do is import this module into the root module (the `AppModule`, defined in the `app.module.ts` file).
-
-```javascript
-// app.module.ts
-import { Module } from '@nestjs/common';
-
-import ProductModule from './product/product.module';
-
-@Module({
-  imports: [ProductModule],
-})
-export class AppModule {}
-```
-
-### Shared Modules
-
-- In **Nest**, modules are `singletons` (design patterns) by default, and thus you can share the same instance of any provider between multiple modules effortlessly.
-
-- Every module is automatically a **shared module**.
-
-![Diagram Shared Module In NestJS](/static/images/blogs/shared-module.png)
-
-```javascript
-// core/logger/logger.module.ts
-import { Module } from '@nestjs/common';
-
-import LoggerService from './logger.service';
-
-@Module({
-  providers: [LoggerService],
-  exports: [LoggerService],
-})
-export default class LoggerModule {}
-```
-
-```javascript
-// modules/product/product.module.ts
-import { Module } from '@nestjs/common';
-
-import LoggerModule from 'core/logger/logger.module';
-
-import ProductController from './product.controller';
-import ProductService from './product.service';
-
-@Module({
-  imports: [LoggerModule],
-  controllers: [ProductController],
-  providers: [ProductService],
-})
-export class ProductModule {}
-
-// Import similar LoggerModule for ShopMonitoringModule and PriceMonitoringModule.
-```
-
-### Global Modules
-
-- In the showcased example within the **shared module section**, the **LoggerModule** undergoes multiple imports across three distinct modules—namely, **ProductModule, ShopMonitoringModule, and PriceMonitoringModule**.
-
-- This redundancy is both **noticeable and avoidable**. To address this issue, **Nest** offers a feature known as the **Global Module**.
-
-- Rather than importing the **LoggerModule** in each module requiring its functionality, we can simplify the process by importing the **LoggerModule** just once in the **AppModule** (the root module) and applying the `@Global()` decorator to the class, turning it into a **Global Module**.
-
-- This approach significantly reduces redundancy and promotes a more efficient and maintainable code structure.
-
-![Diagram Global Module In NestJS](/static/images/blogs/global-module.png)
-
-- `@Global()` decorator make the module global, that you want to provide a set of providers which should be available everywhere:
-
-```javascript
-// core/logger/logger.module.ts
-import { Module, Global } from '@nestjs/common';
-
-import LoggerService from './logger.service';
-
-@Global()
-@Module({
-  providers: [LoggerService],
-  exports: [LoggerService],
-})
-export class LoggerModule {}
-```
-
-- Import **LoggerModule** into **AppModule** (root module):
-
-```javascript
-// app.module.ts
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-
-import { LoggerModule } from './core/logger/logger.module';
-import { ProductModule } from './modules/product/product.module';
-import { ShopMonitoringModule } from './modules/shop-monitoring/shop-monitoring.module';
-import { PriceMonitoringModule } from './modules/price-monitoring/price-monitoring.module';
-
-@Module({
-  imports: [ProductModule, ShopMonitoringModule, PriceMonitoringModule, LoggerModule],
-  controllers: [],
-  providers: [],
-})
-export class AppModule {}
-```
-
-- Using **LoggerService** in **ProductService** (We do not need to import **LoggerModule** into **ProductModule**):
-
-```javascript
-// modules/product/product.service.ts
-import { Injectable } from '@nestjs/common';
-
-import { LoggerService } from '../../core/logger/logger.service';
-
-@Injectable()
-export class ProductService {
-  constructor(private logger: LoggerService) {}
-
-  async findAll(): Promise<any> {
-    this.logger.log('Get all products');
-
-    return [];
-  }
-}
-```
-
-### Dynamic Modules
-
-- This is a **feature** that allows you to easily create a custom module that can **register and configure providers dynamically**.
-
-- Following is an example of a **dynamic module** definition for a `DatabaseModule`:
-
-```javascript
-// core/database/database.providers.ts
-import { Connection } from './connection.provider';
-
-import { createConnection, Repository } from 'typeorm'; // Assuming TypeORM for database interaction
-
-export function createDatabaseProviders(options, entities): any[] {
-  const providers = entities.map((entity) => ({
-    provide: `${entity}Repository`, // Dynamic provider name based on the entity
-    useFactory: (connection: Connection) => connection.getRepository(entity),
-    inject: [Connection],
-  }));
-
-  return [
-    {
-      provide: 'DATABASE_CONNECTION',
-      useFactory: async () => {
-        const connection = await createConnection({
-          ...options,
-          entities: entities,
-        });
-        return connection;
-      },
-    },
-    ...providers, // Include additional providers related to entities
-  ];
-}
-```
-
-```javascript
-// core/database/database.module.ts
-import { Module, DynamicModule } from '@nestjs/common';
-
-import { createDatabaseProviders } from './database.providers';
-import { Connection } from './connection.provider';
-
-@Module({
-  providers: [Connection],
-})
-export class DatabaseModule {
-  static forRoot(entities = [], options?): DynamicModule {
-    const providers = createDatabaseProviders(options, entities);
-    return {
-      module: DatabaseModule,
-      providers: providers,
-      exports: providers,
-    };
-  }
-}
-```
-
-> **Hint**: The `forRoot()` method may return a _dynamic module_ either synchronously or asynchronously.
-
-- This **module** defines the `Connection` provider by default (in the `@Module()` decorator metadata), but additionally - depending on the **entities and options** objects passed into the `forRoot()` method - exposes a collection of providers, for example, **repositories**.
-
-- The `DatabaseModule` can be imported and configured in the following manner:
-
-```javascript
-import { Module } from '@nestjs/common';
-
-import { DatabaseModule } from 'core/database/database.module';
-import { User } from 'modules/user/user.entity.ts';
-import { Product } from 'modules/product/product.entity.ts';
-
-@Module({
-  imports: [
-    DatabaseModule.forRoot([User, Product], {
-      type: 'postgres',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'password',
-      database: 'mydatabase',
-    }),
-  ],
-})
-export class AppModule {}
-```
 
 ## Conclusion
 
@@ -433,4 +217,4 @@ export class AppModule {}
 - [Overview Modules In NestJS](https://docs.nestjs.com/modules)
 - [Fundamentals - Dynamic modules](https://docs.nestjs.com/fundamentals/dynamic-modules)
 
-Happy reading! <Twemoji emoji="clinking-beer-mugs" />
+{/* Happy reading! <Twemoji emoji="clinking-beer-mugs" /> */}
