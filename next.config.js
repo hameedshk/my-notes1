@@ -66,7 +66,7 @@ module.exports = () => {
     eslint: {
       dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
     },
-    output: 'export',
+    output: 'standalone',
     async headers() {
       return [
         {
