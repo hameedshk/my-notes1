@@ -70,6 +70,8 @@ module.exports = () => {
       unoptimized: true, // Necessary if you're using images
     },
     output: 'standalone',
+    basePath: '/out',
+    assetPrefix: '/out/',
     async headers() {
       return [
         {
