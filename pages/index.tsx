@@ -29,7 +29,7 @@ const MAX_DISPLAY = 3;
 export const getStaticProps = async () => {
   const sortedPosts = sortedBlogPost(allBlogs) as Blog[];
   const posts = allCoreContent(sortedPosts);
-
+  console.log('INIT_CWD:', process.env.INIT_CWD);
   return { props: { posts } };
 };
 
