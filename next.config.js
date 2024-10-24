@@ -67,12 +67,12 @@ module.exports = () => {
       dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
     },
     images: {
-      unoptimized: true, // Necessary if you're using images
+      // unoptimized: true, // Necessary if you're using images
     },
     output: 'export',
     basePath: '/my-notes1',
     // assetPrefix: process.env.NODE_ENV === "production" ? "/my-notes1/" : undefined,
-    assetPrefix: '/my-notes1',
+    assetPrefix: '/my-notes1/',
     async headers() {
       return [
         {
