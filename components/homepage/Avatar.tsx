@@ -55,7 +55,13 @@ const Avatar = () => {
       ref={ref}
     >
       <div style={style} className="max-h-[430px] overflow-hidden rounded-md transition-all duration-200 ease-out">
-        <Image src={'/static/images/avatar.jpg'} shouldOpenLightbox={false} alt="avatar" width={430} height={350} />
+        <Image
+          src={'/my-notes1/static/images/avatar.jpg'}
+          shouldOpenLightbox={false}
+          alt="avatar"
+          width={430}
+          height={350}
+        />
       </div>
     </div>
   );
