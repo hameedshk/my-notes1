@@ -72,7 +72,7 @@ module.exports = () => {
     output: 'export',
     basePath: '/my-notes1',
     // assetPrefix: process.env.NODE_ENV === "production" ? "/my-notes1/" : undefined,
-    assetPrefix: '/my-notes1',
+    assetPrefix: '/my-notes1/',
     async headers() {
       return [
         {
